@@ -1,0 +1,9 @@
+fn print() {
+    println!("This is static print");
+
+    println!("Dynamic Strings...");
+    let x = 5;
+    let y = 10;
+
+    println!("x = {x} and y + 2 = {}", y + 2);
+}
