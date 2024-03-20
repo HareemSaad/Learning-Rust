@@ -122,6 +122,9 @@ pub fn common_concepts() {
 
     println!("\nFunctions");
     print_labeled_measurement(5, 'h');
+    let x = plus_one(5);
+
+    println!("The value of x is: {x}");
 
     println!("\nStatements and Expressions");
     // Statements are instructions that perform some action and do not return a value.
@@ -137,4 +140,9 @@ pub fn common_concepts() {
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
     println!("The measurement is: {value}{unit_label}");
+}
+
+// In Rust, the return value of the function is synonymous with the value of the final expression in the block of the body of a function. You can return early from a function by using the return keyword and specifying a value, but most functions return the last expression implicitly.
+fn plus_one(x: i32) -> i32 {
+    x + 1 // no semicolon on a expression (expression is a return statement)
 }
