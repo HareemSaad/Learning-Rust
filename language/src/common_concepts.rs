@@ -138,6 +138,7 @@ pub fn common_concepts() {
     println!("The value of y is: {y}");
 
     println!( "\nControl Flow" );
+    println!( "\nIf Else" );
     let number = 6;
 
     if number % 4 == 0 { // if expects bool if a var named val = 4 if val {} will result in an error
@@ -154,6 +155,8 @@ pub fn common_concepts() {
     let number = if condition { 5 } else { 6 };
 
     println!("The value of number is: {number}");
+    
+    println!( "\nLoop" );
 
     let mut counter = 0;
 
@@ -166,8 +169,10 @@ pub fn common_concepts() {
     };
 
     println!("The result is {result}");
+    println!( "\nLoop Labels" );
 
     // If you have loops within loops, break and continue apply to the innermost loop at that point. You can optionally specify a loop label on a loop that you can then use with break or continue to specify that those keywords apply to the labeled loop instead of the innermost loop. Loop labels must begin with a single quote. Here’s an example with two nested loops:
+    // The outer loop has the label 'counting_up, and it will count up from 0 to 2. The inner loop without a label counts down from 10 to 9. The first break that doesn’t specify a label will exit the inner loop only. The break 'counting_up; statement will exit the outer loop. This code prints:
     let mut count = 0;
     'counting_up: loop {
         println!("count = {count}");
@@ -187,6 +192,17 @@ pub fn common_concepts() {
         count += 1;
     }
     println!("End count = {count}");
+
+    println!( "\nWhile Loop" );
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
