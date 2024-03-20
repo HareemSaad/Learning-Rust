@@ -1,5 +1,5 @@
-mod guessing_game;
+mod common_concepts;
 
 fn main() {
-    guessing_game::game();
+    common_concepts::common_concepts();
 }
