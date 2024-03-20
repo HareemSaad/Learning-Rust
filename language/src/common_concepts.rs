@@ -136,6 +136,19 @@ pub fn common_concepts() {
     };
 
     println!("The value of y is: {y}");
+
+    println!( "\nControl Flow" );
+    let number = 6;
+
+    if number % 4 == 0 { // if expects bool if a var named val = 4 if val {} will result in an error
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
