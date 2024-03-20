@@ -118,5 +118,12 @@ pub fn common_concepts() {
     println!("The array a is {:?}" ,a);
     let a = [3; 5];
     println!("The array a is {:?}" ,a);
-    println!("Accessing first element: {}", a[0])
+    println!("Accessing first element: {}", a[0]);
+
+    println!("\nFunctions");
+    print_labeled_measurement(5, 'h');
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("The measurement is: {value}{unit_label}");
 }
