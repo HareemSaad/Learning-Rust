@@ -122,6 +122,17 @@ pub fn common_concepts() {
 
     println!("\nFunctions");
     print_labeled_measurement(5, 'h');
+
+    println!("\nStatements and Expressions");
+    // Statements are instructions that perform some action and do not return a value.
+    // Expressions evaluate to a resultant value and return a value.
+
+    let y = {
+        let x = 3; // statement
+        x + 1 // expression - no semicolon add one and its a statement
+    };
+
+    println!("The value of y is: {y}");
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
