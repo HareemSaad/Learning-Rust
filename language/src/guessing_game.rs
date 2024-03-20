@@ -11,26 +11,32 @@ pub fn game() {
 
     // println!("The secret number is: {secret_number}");
 
-    println!("Please input your guess.");
+    // loop
+    loop {
+        println!("Please input your guess.");
 
-    let mut guess = String::new(); // create a new string
+        let mut guess = String::new(); // create a new string
 
-    // use :: to call associated function
-    io::stdin() // invoke standard input
-        .read_line(&mut guess)  // read line of text from user and store it by passing address of the variable
-        // writing &mut allows us to modify `guess` variable (allows to use mutability)
-        .expect("Failed to read line"); 
+        // use :: to call associated function
+        io::stdin() // invoke standard input
+            .read_line(&mut guess)  // read line of text from user and store it by passing address of the variable
+            // writing &mut allows us to modify `guess` variable (allows to use mutability)
+            .expect("Failed to read line"); 
 
-    // The trim method on a String instance will eliminate any whitespace at the beginning and end
-    // The parse method on strings converts a string to another type. We need to tell Rust the exact number type we want by using let guess: u32
-    //  If parse returns an Err Result variant because it couldn’t create a number from the string, the expect call will crash the game and print the message we give it. If parse can successfully convert the string to a number, it will return the Ok variant of Result, and expect will return the number that we want from the Ok value.
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        // The trim method on a String instance will eliminate any whitespace at the beginning and end
+        // The parse method on strings converts a string to another type. We need to tell Rust the exact number type we want by using let guess: u32
+        //  If parse returns an Err Result variant because it couldn’t create a number from the string, the expect call will crash the game and print the message we give it. If parse can successfully convert the string to a number, it will return the Ok variant of Result, and expect will return the number that we want from the Ok value.
+        let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
-    println!("You guessed: {guess}");
+        println!("You guessed: {guess}");
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break; // loop break
+            },
+        }
     }
 }
