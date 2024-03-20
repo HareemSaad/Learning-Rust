@@ -210,6 +210,14 @@ pub fn common_concepts() {
     for element in a {
         println!("the value is: {element}");
     }
+    println!();
+
+    // (1..4) range 1 inclusive 4 not inclusive
+    // .rev() reverse
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    println!("LIFTOFF!!!");
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
