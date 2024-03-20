@@ -154,6 +154,18 @@ pub fn common_concepts() {
     let number = if condition { 5 } else { 6 };
 
     println!("The value of number is: {number}");
+
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2 // retun value with break
+        }
+    };
+
+    println!("The result is {result}");
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
