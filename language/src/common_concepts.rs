@@ -203,6 +203,13 @@ pub fn common_concepts() {
     }
 
     println!("LIFTOFF!!!");
+
+    println!( "\nFor Loop" );
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
