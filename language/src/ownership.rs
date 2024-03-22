@@ -29,5 +29,12 @@ pub fn ownership() {
     // The length is how much memory, in bytes, the contents of the String are currently using. The capacity is the total amount of memory, in bytes, that the String has received from the allocator.
     // When we assign s1 to s2, the String data is copied, meaning we copy the pointer, the length, and the capacity that are on the stack. We do not copy the data on the heap that the pointer refers to. 
     // This is a problem: when s2 and s1 go out of scope, they will both try to free the same memory. This is known as a double free error. Freeing memory twice can lead to memory corruption, which can potentially lead to security vulnerabilities.
-    
+
+    // If we do want to deeply copy the heap data of the String, not just the stack data, we can use a common method called clone. expensive.
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+    println!("s1 = {}, s2 = {}", s1, s2);
+
+
 }
