@@ -36,5 +36,11 @@ pub fn ownership() {
 
     println!("s1 = {}, s2 = {}", s1, s2);
 
+    let x = 5;
+    let y = x;
 
+    println!("x = {}, y = {}", x, y);
+    // sine integers are stored on stack, there’s no reason we would want to prevent x from being valid after we create the variable y.
+
+    // Rust has a special annotation called the Copy trait that we can place on types that are stored on the stack, as integers are (we’ll talk more about traits in Chapter 10). If a type implements the Copy trait, variables that use it do not move, but rather are trivially copied, making them still valid after assignment to another variable.
 }
