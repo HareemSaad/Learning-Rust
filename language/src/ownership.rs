@@ -20,5 +20,14 @@ pub fn ownership() {
     //  - The memory must be requested from the memory allocator at runtime. (done when calling `String::from`)
     //  - We need a way of returning this memory to the allocator when we’re done with our String. (done when variable goes out of scope)
 
+    let s1 = String::from("hello");
+    let s2 = s1;
+    println!("{}", s2); // prints `hello, world!`,
+    // println!("{}", s1); // value is moved from s1 to s2 s1 does not exist
 
+    // A String is made up of three parts, a pointer to the heap memory where the string lives, a length, and capacity. This group of data is stored on the stack.
+    // The length is how much memory, in bytes, the contents of the String are currently using. The capacity is the total amount of memory, in bytes, that the String has received from the allocator.
+    // When we assign s1 to s2, the String data is copied, meaning we copy the pointer, the length, and the capacity that are on the stack. We do not copy the data on the heap that the pointer refers to. 
+    // This is a problem: when s2 and s1 go out of scope, they will both try to free the same memory. This is known as a double free error. Freeing memory twice can lead to memory corruption, which can potentially lead to security vulnerabilities.
+    
 }
