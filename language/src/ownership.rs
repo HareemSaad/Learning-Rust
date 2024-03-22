@@ -43,4 +43,61 @@ pub fn ownership() {
     // sine integers are stored on stack, there’s no reason we would want to prevent x from being valid after we create the variable y.
 
     // Rust has a special annotation called the Copy trait that we can place on types that are stored on the stack, as integers are (we’ll talk more about traits in Chapter 10). If a type implements the Copy trait, variables that use it do not move, but rather are trivially copied, making them still valid after assignment to another variable.
+
+    // note that we pass &s1 into calculate_length and, in its definition, we take &String rather than String. These ampersands represent references, and they allow you to refer to some value without taking ownership of it. Fance words for its a pointer
+    // Note: The opposite of referencing by using & is dereferencing, which is accomplished with the dereference operator, *.
+    let mut s1 = String::from("hello"); //here (1)
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+
+    change(&mut s); //here (2)
+    
+    println!("{}", s1);
+
+    // borrwing twice will cause error, to prevent data race
+    // let r1 = &mut s;
+    // let r2 = &mut s;
+
+    // println!("{}, {}", r1, r2);
+
+    // how to borrow twice then? solution scopes
+
+    {
+        let r1 = &mut s;
+    } // r1 goes out of scope here, so we can make a new reference with no problems.
+
+    let r2 = &mut s;
+
+    // mutable and immutable refernces
+    // let mut s = String::from("hello");
+
+    // let r1 = &s; // no problem
+    // let r2 = &s; // no problem
+    // let r3 = &mut s; // BIG PROBLEM
+
+    // println!("{}, {}, and {}", r1, r2, r3);
+
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    println!("{} and {}", r1, r2);
+    // variables r1 and r2 will not be used after this point
+
+    let r3 = &mut s; // no problem
+    println!("{}", r3);
+    // println!("{}", r1); // but if this eists meaning r1's scope hasn't eneded and will cause error. reference’s scope starts from where it is introduced and continues through the last time that reference is used. 
+
+
+}
+
+// reading references
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+
+// writing references
+// won't work if if the passed string is not mutable; solution add mut
+fn change(some_string: &mut String) { // and here (3)
+    some_string.push_str(", world");
 }
