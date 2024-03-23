@@ -91,6 +91,29 @@ pub fn ownership() {
     let reference_to_nothing = no_dangle();
 
     println!("{}", reference_to_nothing);
+
+
+    let mut s = String::from("hello world");
+
+    let word = first_word(&s); // word will get the value 5
+
+    s.clear(); // this empties the String, making it equal to ""
+
+    let s = String::from("hello world");
+
+    let hello = &s[0..5]; // .. is range suntax // or &s[..5]
+    let world = &s[6..11]; /// or &s[3..]
+    println!("Hello {}! World {}!", hello, world);
+
+    let len = s.len();
+
+    let slice = &s[0..len];
+    let slice = &s[..];
+
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+
+    assert_eq!(slice, &[2, 3]);
 }
 
 // reading references
@@ -117,4 +140,21 @@ fn no_dangle() -> String {
     let s = String::from("hello");
 
     s
+}
+
+fn first_word(s: &String) -> &str {
+    // transfor size to bytes
+    let bytes = s.as_bytes();
+
+    // iter() = iterate each char
+    // enumerate: wrap in tupple,  The first element of the tuple returned from enumerate is the index, and the second element is a reference to the element.
+    // i: iterators
+    // item holds tuple
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' { //byte literal: b' ' means byte space
+            return &s[..i]; // return index of space
+        }
+    }
+
+    &s[..] // otherwise return length
 }
