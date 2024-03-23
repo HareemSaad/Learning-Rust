@@ -88,7 +88,9 @@ pub fn ownership() {
     println!("{}", r3);
     // println!("{}", r1); // but if this eists meaning r1's scope hasn't eneded and will cause error. reference’s scope starts from where it is introduced and continues through the last time that reference is used. 
 
+    let reference_to_nothing = no_dangle();
 
+    println!("{}", reference_to_nothing);
 }
 
 // reading references
@@ -100,4 +102,19 @@ fn calculate_length(s: &String) -> usize {
 // won't work if if the passed string is not mutable; solution add mut
 fn change(some_string: &mut String) { // and here (3)
     some_string.push_str(", world");
+}
+
+// // dangle pointers
+// // Because s is created inside dangle, when the code of dangle is finished, s will be deallocated. But we tried to return a reference to it. That means this reference would be pointing to an invalid String.
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+
+//     &s
+// } // Here, s goes out of scope, and is dropped. Its memory goes away.
+
+// he solution here is to return the String directly:
+fn no_dangle() -> String {
+    let s = String::from("hello");
+
+    s
 }
