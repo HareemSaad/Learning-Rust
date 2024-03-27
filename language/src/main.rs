@@ -1,5 +1,5 @@
-mod structs_advanced;
+mod enums;
 
 fn main() {
-    structs_advanced::structs_advanced();
+    enums::enums();
 }
