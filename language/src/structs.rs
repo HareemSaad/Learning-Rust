@@ -14,6 +14,13 @@ pub fn structs() {
     
     user1.email = String::from("anotheremail@example.com");
     println!("{}",  user1.email);
+
+    // creates an instance in user2 that has a different value for email but has the same values for the username, active, and sign_in_count fields from user1
+    let user2 = User {
+        email: String::from("another@example.com"),
+        ..user1
+    };
+    println!("{}",  user2.email);
 }
 
 fn build_user(email: String, username: String) -> User {
