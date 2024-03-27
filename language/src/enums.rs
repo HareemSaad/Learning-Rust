@@ -40,6 +40,13 @@ enum Prize {
     SECOND_RUNNER_UP(Medal)
 }
 
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 }, // named fields in {}
+    Write(String), // type string 
+    ChangeColor(i32, i32, i32), // tuple
+}
+
 pub fn enums() {
     
     let circle = Shape::CIRCLE;
