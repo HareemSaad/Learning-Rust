@@ -1,5 +1,5 @@
-mod structs;
+mod structs_advanced;
 
 fn main() {
-    structs::structs();
+    structs_advanced::structs_advanced();
 }
