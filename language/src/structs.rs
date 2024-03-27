@@ -5,6 +5,9 @@ struct User {
     sign_in_count: u64,
 }
 
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
 pub fn structs() {
     let mut user1 = build_user(
         String::from("someone@example.com"),
@@ -21,6 +24,9 @@ pub fn structs() {
         ..user1
     };
     println!("{}",  user2.email);
+
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
 }
 
 fn build_user(email: String, username: String) -> User {
