@@ -15,6 +15,15 @@ impl Rectangle { // impl struct_name: implementation block (contains all methods
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
     }
+
+    // methods that don't have self arg are often used as constructors
+    // are called using ::
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
 }
 
 pub fn structs_advanced() {
@@ -40,4 +49,7 @@ pub fn structs_advanced() {
         height: 50,
     };
     println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+
+    let sq = Rectangle::square(3);
+    println!("{:?}", sq);
 }
