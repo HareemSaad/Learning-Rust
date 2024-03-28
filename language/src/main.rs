@@ -1,5 +1,5 @@
-mod panic; //filename
+mod errors; //filename
 
 fn main() {
-    panic::panic();
+    errors::errors();
 }
