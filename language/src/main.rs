@@ -1,5 +1,5 @@
-mod hash_maps; //filename
+mod panic; //filename
 
 fn main() {
-    hash_maps::hash_maps();
+    panic::panic();
 }
