@@ -13,4 +13,13 @@ pub fn hash_maps() {
     for (key, value) in &scores {
         println!("{key}: {value}");
     }
+
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name, field_value);
+    // field_name and field_value are invalid at this point as hashmap has owner ship  of them
+
+    // If we insert references to values into the hash map, the values won’t be moved into the hash map. The values that the references point to must be valid for at least as long as the hash map is valid.
 }
