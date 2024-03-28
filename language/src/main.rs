@@ -1,5 +1,5 @@
-mod if_let_control_flow; //filename
+mod vectors; //filename
 
 fn main() {
-    if_let_control_flow::if_let_control_flow();
+    vectors::vectors();
 }
