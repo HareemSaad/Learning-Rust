@@ -18,10 +18,23 @@ pub fn vectors() {
     let third: &i32 = &v[2];
     println!("The third element is {third}");
 
-    let third: Option<&i32> = v.get(2); // get method gives us Option<T> value
+    let third: Option<&i32> = v.get(2); // get method gives us Option<T> value; return None if values overflows or underflows
     let fourth: Option<&i32> = v.get(3);
     match third {
         Some(third) => println!("The third element is {third}"),
         None => println!("There is no third element."),
     }
+
+    let v = vec![1, 2, 3, 4, 5];
+
+    // let does_not_exist = &v[100]; // returns reference; causes error: index out of bounds
+    let does_not_exist = v.get(100); // returns Option<T>
+    
+    let mut v = vec![100, 32, 57];
+    for i in &mut v {
+        *i += 50;
+    }
+
+    println!("{:?}",  v);
+
 }
