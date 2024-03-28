@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::io::ErrorKind;
 
 pub fn errors() {
     // The return type of File::open is a Result<T, E>.
@@ -7,6 +8,19 @@ pub fn errors() {
     
     let greeting_file = match greeting_file_result {
         Ok(file) => file, //When the result is Ok, this code will return the inner file
-        Err(error) => panic!("Problem opening the file: {:?}", error), // error can be any variable
+        // Err(error) => panic!("Problem opening the file: {:?}", error), // error can be any variable
+
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt") { //if not found create the file
+                Ok(fc) => {
+                    println!("Creating new file...");
+                    fc
+                }, // return file if success; or just write Ok(fc) => fc if no other actiom (like print) needs to take place
+                Err(e) => panic!("Problem creating the file: {:?}", e), // panic if not
+            },
+            other_error => {
+                panic!("Problem opening the file: {:?}", other_error);
+            }
+        },
     };
 }
