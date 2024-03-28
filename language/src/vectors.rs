@@ -1,3 +1,10 @@
+#[derive(Debug)]
+enum SpreadsheetCell {
+    Int(i32),
+    Float(f64),
+    Text(String),
+}
+
 pub fn vectors() {
     // Vectors allow you to store more than one value in a single data structure that puts all the values next to each other in memory. Vectors can only store values of the same type
     let v: Vec<i32> = Vec::new(); // create vector
@@ -36,5 +43,13 @@ pub fn vectors() {
     }
 
     println!("{:?}",  v);
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+
+    println!("{:?}",  row);
 
 }
