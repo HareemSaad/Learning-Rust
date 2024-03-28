@@ -1,5 +1,5 @@
-mod vectors; //filename
+mod hash_maps; //filename
 
 fn main() {
-    vectors::vectors();
+    hash_maps::hash_maps();
 }
