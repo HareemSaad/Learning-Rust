@@ -22,4 +22,12 @@ pub fn hash_maps() {
     // field_name and field_value are invalid at this point as hashmap has owner ship  of them
 
     // If we insert references to values into the hash map, the values won’t be moved into the hash map. The values that the references point to must be valid for at least as long as the hash map is valid.
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+
+    scores.entry(String::from("Yellow")).or_insert(50); // inserts only if value doesn't exist
+    scores.entry(String::from("Blue")).or_insert(50);
+
+    println!("{:?}", scores);
 }
